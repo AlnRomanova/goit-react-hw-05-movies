@@ -12,6 +12,11 @@ export const fetchTrendingMovies = async() => {
 
 export const fetchSearchMovies = async keyword => {
   const response = await axios('search/movie/', {params: {api_key: KEY, query: keyword}});
+  return response.data.results;
+};
+
+export const fetchMoviesById = async(id) => {
+  const response = await axios(`movie/${id}`, {params: {api_key: KEY}});
   console.log(response)
   return response.data.results;
 };
