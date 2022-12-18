@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchSearchMovies } from 'services/moviesAPI';
 import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
   const query = searchParams.get('title');
 
@@ -29,7 +32,9 @@ const Movies = () => {
       </form>
       <ul>
         {movies.map(({ id, title }) => (
-          <li key={id}>{title}</li>
+          <li key={id}>
+            <Link state={{from: location}} to={`${id}`}>{title}</Link>
+            </li>
         ))}
         <Outlet />
       </ul>
