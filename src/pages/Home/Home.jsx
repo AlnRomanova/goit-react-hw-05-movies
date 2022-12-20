@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-const HomePage = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
 
@@ -32,4 +32,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
