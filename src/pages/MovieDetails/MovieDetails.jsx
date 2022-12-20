@@ -13,8 +13,8 @@ const MovieDetails = () => {
   console.log(movieId)
   const navigate = useNavigate();
   const location = useLocation();
-  const [movie, setMovie] = useState({});
-  console.log(movie)
+  const [movie, setMovie] = useState(null);
+
 
    useEffect(()=> {
      fetchMoviesById(movieId)
@@ -27,8 +27,17 @@ const MovieDetails = () => {
 
 
 
- const {title, overview, vote_average, poster_path} = movie;
+  if (!movie) {
+    return null
+ }
+
+
+ const {title, overview, vote_average, poster_path, popularity, genres
+ } = movie;
  console.log(movie)
+
+
+
   return (
     <>
      <button
@@ -39,21 +48,18 @@ const MovieDetails = () => {
       >
         Go back
       </button>
-      {movie && (
-
     <div>
           <p>{title}</p>
-          <img src={`${poster_path}`} alt={title} />
+          <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title} />
           <p>Vote: {vote_average}</p>
+          <p>Popularity: {popularity} </p>
           <p>Overview: {overview}</p>
-
+          <p>Genres: {genres.map(genre => genre.name).join(', ')}</p>
 
         </div>
 
-        )}
 
-
-        <Link state={{from: location}} to={`${movieId}`}></Link>
+        <Link state={{from: location}} to="movieId"></Link>
         <Outlet/>
         </>
   )

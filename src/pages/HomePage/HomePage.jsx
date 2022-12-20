@@ -14,13 +14,17 @@ const HomePage = () => {
     .then(setMovies)
   }, []);
 
+  if (!movies) {
+    return null;
+  }
+
   return (
     <>
     <h1>Trending today</h1>
       <ul>
         {movies.map(({ id, title }) => (
           <li key={id}>
-          <Link state={{from: location }} to={`${id}`}>{title}</Link></li>
+          <Link state={{from: location }} to={`movies/${id}`}>{title}</Link></li>
         ))}
         <Outlet />
       </ul>
