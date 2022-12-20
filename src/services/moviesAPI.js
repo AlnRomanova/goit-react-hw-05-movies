@@ -16,7 +16,21 @@ export const fetchSearchMovies = async keyword => {
 
 export const fetchMoviesById = async (movieId) => {
   const response = await axios(`movie/${movieId}`, {params: {api_key: KEY}});
+  console.log(response)
   return response.data
+
+};
+
+export const fetchCredits = async (movieId )=> {
+  const response = await axios(`movie/${movieId}/credits`, {params: {api_key: KEY}});
+  return response.data.cast
+
+};
+
+export const fetchReviews = async (movieId )=> {
+  const response = await axios(`movie/${movieId}/reviews`, {params: {api_key: KEY}});
+  console.log(response)
+  return response.data.results;
 
 };
 
