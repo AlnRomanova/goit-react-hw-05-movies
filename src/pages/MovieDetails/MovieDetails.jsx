@@ -1,5 +1,7 @@
 import React from 'react';
-import useFetchMovies from 'hooks/useFetchMovie';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { fetchMoviesById } from "services/moviesAPI";
 import { Outlet } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -7,11 +9,23 @@ import { Link } from 'react-router-dom';
 
 
 const MovieDetails = () => {
-
-  const movie = useFetchMovies();
+  const {movieId} = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  console.log(movieId)
+  const [movie, setMovie] = useState({});
 
+   useEffect(()=> {
+     fetchMoviesById(movieId)
+    .then(setMovie)
+    .catch(error => {
+      console.log(error)
+    });
+
+   }, [movieId]);
+
+ const {title, overview, vote_average, poster_path} = movie;
+ console.log(movie)
   return (
     <>
      <button
@@ -22,18 +36,24 @@ const MovieDetails = () => {
       >
         Go back
       </button>
+      {movie && (
+
     <div>
-          <p>{movie.title}</p>
-          <img src={`${movie.poster_path}`} alt={movie.title} />
-          <p>Vote: {movie.vote_average}</p>
-          <p>Overview: {movie.overview}</p>
-          <p>Genres: {movie.genres[0].name}</p>
+          <p>{title}</p>
+          <img src={`${poster_path}`} alt={title} />
+          <p>Vote: {vote_average}</p>
+          <p>Overview: {overview}</p>
+
         </div>
 
-        <Link state={location.state} to="movieId"></Link>
-        <Outlet/>
+        )}
+<Outlet/>
+
+        <Link state={{from: location}} to={`${movieId}`}></Link>
+
         </>
   )
 }
+
 
 export default MovieDetails;
