@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchTrendingMovies } from 'services/moviesAPI';
-import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -26,7 +25,6 @@ const Home = () => {
           <li key={id}>
           <Link state={{from: location }} to={`movies/${id}`}>{title}</Link></li>
         ))}
-        <Outlet />
       </ul>
     </>
   );

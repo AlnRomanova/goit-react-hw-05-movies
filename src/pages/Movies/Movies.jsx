@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchSearchMovies } from 'services/moviesAPI';
-import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -36,7 +35,6 @@ const Movies = () => {
             <Link state={{from: location}} to={`${id}`}>{title}</Link>
             </li>
         ))}
-        <Outlet />
       </ul>
     </>
   );
