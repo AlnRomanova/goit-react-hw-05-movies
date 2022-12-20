@@ -10,7 +10,8 @@ const HomePage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetchTrendingMovies().then(setMovies);
+    fetchTrendingMovies()
+    .then(setMovies)
   }, []);
 
   return (

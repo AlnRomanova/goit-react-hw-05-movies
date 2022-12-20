@@ -10,10 +10,11 @@ import { Link } from 'react-router-dom';
 
 const MovieDetails = () => {
   const {movieId} = useParams();
+  console.log(movieId)
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(movieId)
   const [movie, setMovie] = useState({});
+  console.log(movie)
 
    useEffect(()=> {
      fetchMoviesById(movieId)
@@ -23,6 +24,8 @@ const MovieDetails = () => {
     });
 
    }, [movieId]);
+
+
 
  const {title, overview, vote_average, poster_path} = movie;
  console.log(movie)
@@ -44,13 +47,14 @@ const MovieDetails = () => {
           <p>Vote: {vote_average}</p>
           <p>Overview: {overview}</p>
 
+
         </div>
 
         )}
-<Outlet/>
+
 
         <Link state={{from: location}} to={`${movieId}`}></Link>
-
+        <Outlet/>
         </>
   )
 }
