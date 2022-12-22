@@ -1,6 +1,5 @@
-import { lazy } from "react";
+import { lazy, Suspense} from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import Layout from "./Layout";
 import Cast from "./Cast";
 import Reviews from "./Reviews";
@@ -12,8 +11,7 @@ const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'))
 
 export const App = () => {
   return (
-    <>
-    <ToastContainer autoClose={2000} />
+    <Suspense fallback={<div>Loading...</div>}>
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<Home/>}/>
@@ -25,7 +23,7 @@ export const App = () => {
       </Route>
       <Route path="*" element={<Navigate to="/" />}/>
     </Routes>
-    </>
+    </Suspense>
 
   );
 };
