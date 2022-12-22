@@ -13,7 +13,9 @@ const Movies = () => {
   const query = searchParams.get('query');
 
   useEffect(() => {
-    if (query === '' || query === null) return;
+    if (query === '' || query === null)  {
+      return
+    }
 
     fetchSearchMovies(query)
     .then(setMovies)
@@ -22,6 +24,9 @@ const Movies = () => {
   const handleSearchSubmit = e => {
     e.preventDefault();
     setSearchParams({ query: e.currentTarget.elements.query.value.trim() });
+    if(query === "") {
+      return alert("Sorry, there are no movies matching your search query")
+    }
     e.target.reset();
   };
 
@@ -31,7 +36,7 @@ const Movies = () => {
         <input className={css.searchInput} name="query" type="text" />
         <button className={css.searchBtn}>Search</button>
       </form>
-
+       {movies && (
       <ul className={css.moviesList}>
         {movies.map(({ id, title }) => (
           <li className={css.moviesItem} key={id}>
@@ -41,6 +46,7 @@ const Movies = () => {
           </li>
         ))}
       </ul>
+      )}
     </>
   );
 };
