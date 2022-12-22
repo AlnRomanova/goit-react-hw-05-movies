@@ -23,10 +23,12 @@ const Movies = () => {
 
   const handleSearchSubmit = e => {
     e.preventDefault();
-    setSearchParams({ query: e.currentTarget.elements.query.value.trim() });
+
     if(query === "") {
       return alert("Sorry, there are no movies matching your search query")
     }
+    setSearchParams({ query: e.currentTarget.elements.query.value.trim() });
+
     e.target.reset();
   };
 
@@ -34,7 +36,7 @@ const Movies = () => {
     <>
       <form className={css.searchForm} onSubmit={handleSearchSubmit}>
         <input className={css.searchInput} name="query" type="text" />
-        <button className={css.searchBtn}>Search</button>
+        <button disabled={!movies}  className={css.searchBtn}>Search</button>
       </form>
        {movies && (
       <ul className={css.moviesList}>
