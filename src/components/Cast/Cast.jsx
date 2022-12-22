@@ -38,7 +38,7 @@ const Cast = () => {
                 alt={name}
               />
               <p className={css.text}>{name}</p>
-              <p className={css.text}>{character}</p>
+              <p className={css.textCharacter}>{character}</p>
             </li>
           ))}
         </ul>

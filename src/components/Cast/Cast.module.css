@@ -24,7 +24,13 @@
 .text {
   margin-top: 5px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
+  text-align: center;
+}
+
+.textCharacter {
+  margin-top: 2px;
+  font-size: 15px;
   text-align: center;
 }
 
