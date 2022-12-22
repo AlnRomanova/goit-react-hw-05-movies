@@ -12,7 +12,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
-  const query = searchParams.get('title');
+  const query = searchParams.get('query');
 
   useEffect(() => {
     if (query === '' || query === null) return;
@@ -30,7 +30,7 @@ const Movies = () => {
     if(param.trim() === '' ) {
       return toast.error("🤯 Please fill out this field!")
       }
-    setSearchParams({ title: param });
+    setSearchParams({ query: param });
     e.target.reset();
   };
 
