@@ -23,7 +23,7 @@ const Movies = () => {
 
   const handleSearchSubmit = e => {
     e.preventDefault();
-    const param = e.target.elements.param.value;
+    const param = e.target.elements.query.value;
     if(param.trim() === '' ) {
       return toast.error("🤯 Please fill out this field!")
       }
