@@ -1,8 +1,10 @@
 import React from 'react';
+import css from './Home.module.css';
 import { fetchTrendingMovies } from 'services/moviesAPI';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -19,10 +21,10 @@ const Home = () => {
 
   return (
     <>
-    <h1>Trending today</h1>
-      <ul>
+    <h1 className={css.homeTitle}>Trending today</h1>
+      <ul className={css.homeList}>
         {movies.map(({ id, title }) => (
-          <li key={id}>
+          <li className={css.homeItem} key={id}>
           <Link state={{from: location }} to={`movies/${id}`}>{title}</Link></li>
         ))}
       </ul>

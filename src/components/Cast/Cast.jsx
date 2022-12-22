@@ -1,43 +1,48 @@
 import React from 'react';
+import css from 'components/Cast/Cast.module.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCredits } from 'services/moviesAPI';
 
-
-
-const Cast = () =>  {
-
-  const {movieId} = useParams();
+const Cast = () => {
+  const { movieId } = useParams();
   const [cast, setCast] = useState(null);
-  
-  useEffect(()=> {
-    fetchCredits(movieId)
-   .then(setCast)
-   .catch(error => {
-     console.log(error)
-   });
 
+  useEffect(() => {
+    fetchCredits(movieId)
+      .then(setCast)
+      .catch(error => {
+        console.log(error);
+      });
   }, [movieId]);
 
-
- if (!cast) {
-   return null
-};
-
+  if (!cast) {
+    return null;
+  }
 
   return (
     <>
-   <ul>
-    {cast.map(({ id, character, profile_path , name }) => (
-        <li key={id}>
-      <p>Actor name: {name}</p>
-      <img src={`https://image.tmdb.org/t/p/w200/${profile_path}`} alt={name} />
-      <p>Character: {character}</p>
-      </li>
-       ))}
-    </ul>
+      {cast.length ? (
+        <ul className={css.castList}>
+          {cast.map(({ id, character, profile_path, name }) => (
+            <li className={css.castItem} key={id}>
+              <img
+                className={css.castImg}
+                src={`https://image.tmdb.org/t/p/w200/${profile_path}`}
+                alt={name}
+              />
+              <p className={css.text}>{name}</p>
+              <p className={css.text}>{character}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={css.message}>
+          We don't have any information about cast of this movie.
+        </p>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Cast
+export default Cast;

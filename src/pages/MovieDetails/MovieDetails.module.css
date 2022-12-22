@@ -1,0 +1,83 @@
+.movie {
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 50px;
+  border: 2px solid #413790;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgb(44, 57, 58);
+  padding: 20px;
+  display: flex;
+  }
+
+.movieTitle {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: start;
+}
+
+.movieNextTitle {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.movieInfo {
+ font-size: 22px;
+ margin-top: 5px;
+
+}
+
+.movieDescription {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+
+}
+
+.btn {
+  margin-left: 30px;
+  color: #232b39;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: white;
+  padding: 8px 8px;
+  border: 2px solid #413790;
+  cursor: pointer;
+}
+
+
+.btn:hover, .btn:focus {
+  background-color:#413790;
+  color: white;
+}
+
+.cast, .review {
+  font-family: "Roboto Mono", monospace;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin-left: 30px;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #413790;
+  border: 2px solid #413790;
+  background:#fff;
+
+}
+
+.cast:hover, .review:hover {
+  background-color:  #413790;
+  color: #fff;
+}
+
+
+

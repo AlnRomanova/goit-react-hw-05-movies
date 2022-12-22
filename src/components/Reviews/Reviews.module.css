@@ -1,0 +1,29 @@
+.reviewItem {
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgb(44, 57, 58);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.reviewAuthor {
+  font-size:20px;
+}
+
+.reviewAuthorNick {
+  margin-left: 10px;
+  font-size:20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.message {
+  margin-top: 50px;
+  font-size: 22px;
+  padding: 0 30px;
+}
