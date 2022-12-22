@@ -10,9 +10,9 @@ export const fetchTrendingMovies = async () => {
   return response.data.results;
 };
 
-export const fetchSearchMovies = async keyword => {
-  const response = await axios('search/movie/', {
-    params: { api_key: KEY, query: keyword },
+export const fetchSearchMovies = async query => {
+  const response = await axios(`search/movie?query=${query}`, {
+    params: { api_key: KEY, query},
   });
   return response.data.results;
 };

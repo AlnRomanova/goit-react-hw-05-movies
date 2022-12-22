@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import css from './Movies.module.css';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {  useSearchParams } from 'react-router-dom';
 import { fetchSearchMovies } from 'services/moviesAPI';
 import { Link } from 'react-router-dom';
@@ -23,18 +21,14 @@ const Movies = () => {
 
   const handleSearchSubmit = e => {
     e.preventDefault();
-    const param = e.target.elements.query.value;
-    if(param.trim() === '' ) {
-      return toast.error("🤯 Please fill out this field!")
-      }
-    setSearchParams({ query: param });
+    setSearchParams({ query: e.currentTarget.elements.query.value.trim() });
     e.target.reset();
   };
 
   return (
     <>
       <form className={css.searchForm} onSubmit={handleSearchSubmit}>
-        <input className={css.searchInput} name="param" type="text" />
+        <input className={css.searchInput} name="query" type="text" />
         <button className={css.searchBtn}>Search</button>
       </form>
 
