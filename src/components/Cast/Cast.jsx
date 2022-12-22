@@ -3,6 +3,7 @@ import css from 'components/Cast/Cast.module.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCredits } from 'services/moviesAPI';
+import defaultImage from 'image/default.jpg';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -20,15 +21,20 @@ const Cast = () => {
     return null;
   }
 
+
   return (
     <>
       {cast.length ? (
         <ul className={css.castList}>
           {cast.map(({ id, character, profile_path, name }) => (
             <li className={css.castItem} key={id}>
-              <img
+            <img
                 className={css.castImg}
-                src={`https://image.tmdb.org/t/p/w200/${profile_path}`}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+                    : defaultImage
+                }
                 alt={name}
               />
               <p className={css.text}>{name}</p>

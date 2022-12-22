@@ -6,6 +6,7 @@ import { fetchMoviesById } from 'services/moviesAPI';
 import { Outlet } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import defaultImage from 'image/default.jpg';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -40,7 +41,11 @@ const MovieDetails = () => {
       </button>
       <div className={css.movie}>
         <img
-          src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+              : defaultImage
+          }
           alt={title}
         />
         <div className={css.movieDescription}>
