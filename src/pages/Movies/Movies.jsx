@@ -24,9 +24,6 @@ const Movies = () => {
   const handleSearchSubmit = e => {
     e.preventDefault();
 
-    if(query === "") {
-      return alert("Sorry, there are no movies matching your search query")
-    }
     setSearchParams({ query: e.currentTarget.elements.query.value.trim() });
 
     e.target.reset();
