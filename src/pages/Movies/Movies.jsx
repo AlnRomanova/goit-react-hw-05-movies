@@ -37,7 +37,7 @@ const Movies = () => {
         <input className={css.searchInput} name="param" type="text" />
         <button className={css.searchBtn}>Search</button>
       </form>
-       {movies && (
+
       <ul className={css.moviesList}>
         {movies.map(({ id, title }) => (
           <li className={css.moviesItem} key={id}>
@@ -47,7 +47,6 @@ const Movies = () => {
           </li>
         ))}
       </ul>
-       )}
     </>
   );
 };
