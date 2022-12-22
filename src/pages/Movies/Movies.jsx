@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import css from './Movies.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSearchParams } from 'react-router-dom';
+import {  useSearchParams } from 'react-router-dom';
 import { fetchSearchMovies } from 'services/moviesAPI';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -19,9 +19,6 @@ const Movies = () => {
 
     fetchSearchMovies(query)
     .then(setMovies)
-    .catch(error => {
-      setMovies(error);
-    });
   }, [query]);
 
   const handleSearchSubmit = e => {
@@ -40,6 +37,7 @@ const Movies = () => {
         <input className={css.searchInput} name="param" type="text" />
         <button className={css.searchBtn}>Search</button>
       </form>
+       {movies && (
       <ul className={css.moviesList}>
         {movies.map(({ id, title }) => (
           <li className={css.moviesItem} key={id}>
@@ -49,6 +47,7 @@ const Movies = () => {
           </li>
         ))}
       </ul>
+       )}
     </>
   );
 };
