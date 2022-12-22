@@ -16,10 +16,9 @@ const Movies = () => {
 
   useEffect(() => {
     if (query === '' || query === null) return;
+
     fetchSearchMovies(query)
-    .then(response => {
-     setMovies(response);
-    })
+    .then(setMovies)
     .catch(error => {
       setMovies(error);
     });
